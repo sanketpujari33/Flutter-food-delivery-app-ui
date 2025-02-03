@@ -9,8 +9,8 @@ class StarterPage extends StatefulWidget {
 }
 
 class _StarterPageState extends State<StarterPage> with TickerProviderStateMixin{
-  AnimationController _animationController;
-  Animation<double> _animation;
+  late AnimationController _animationController;
+  late Animation<double> _animation;
 
   bool _textVisible = true;
 
@@ -48,6 +48,8 @@ class _StarterPageState extends State<StarterPage> with TickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -74,11 +76,10 @@ class _StarterPageState extends State<StarterPage> with TickerProviderStateMixin
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                FadeAnimation(.5, Text('Taking Order For Faster Delivery', style: TextStyle(color: Colors.white, fontSize: 50, fontWeight: FontWeight.bold),)),
-                SizedBox(height: 20,),
-                FadeAnimation(1, Text("See resturants nearby by \nadding location", style: TextStyle(color: Colors.white, height: 1.4, fontSize: 18),)),
-                SizedBox(height: 100,),
-                FadeAnimation(1.2, 
+                Text('Taking Order For Faster Delivery', style: theme.textTheme.headlineLarge!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),),
+                SizedBox(height: 16,),
+                Text("See restaurants nearby by \nadding location", style: theme.textTheme.titleLarge!.copyWith(color: Colors.grey.shade300),),
+                SizedBox(height: 80,),
                 ScaleTransition(
                   scale: _animation,
                   child: Container(
@@ -101,17 +102,15 @@ class _StarterPageState extends State<StarterPage> with TickerProviderStateMixin
                       ),
                     )
                   )),
-                ),
                 SizedBox(height: 30,),
-                FadeAnimation(1.4,
                 AnimatedOpacity(
                   opacity: _textVisible ? 1.0 : 0.0,
                   duration: Duration(milliseconds: 50),
                   child: Align(
                     child: Text("Now Deliver To Your Door 24/7", style: TextStyle(color: Colors.white70, fontSize: 15),),
                   ),
-                )),
-                SizedBox(height: 30,),
+                ),
+                SizedBox(height: 50,),
               ],
             ),
           ),

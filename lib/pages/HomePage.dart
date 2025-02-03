@@ -31,13 +31,13 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.grey[100],
         elevation: 0,
-        brightness: Brightness.light,
+        // brightness: Brightness.light,
         leading: Icon(null),
         actions: <Widget>[
-          FadeAnimation(1, IconButton(
+         IconButton(
             onPressed: () {},
             icon: Icon(Icons.shopping_basket, color: Colors.grey[800],),
-          ))
+          )
         ],
       ),
       body: SafeArea(
@@ -49,7 +49,7 @@ class _HomePageState extends State<HomePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  FadeAnimation(1, Text('Food Delivery', style: TextStyle(color: Colors.grey[80], fontWeight: FontWeight.bold, fontSize: 30),)),
+                  Text('Food Delivery', style: TextStyle(color: Colors.grey[80], fontWeight: FontWeight.bold, fontSize: 30),),
                   SizedBox(height: 20,),
                   Container(
                     height: 50,
@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                       scrollDirection: Axis.horizontal,
                       itemCount: categories.length,
                       itemBuilder: (context, index) => 
-                      FadeAnimation(1, makeCategory(title: categories[index], index: index))
+                       makeCategory(title: categories[index], index: index)
                     ),
                     // child: ListView(
                     //   scrollDirection: Axis.horizontal,
@@ -74,10 +74,10 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            FadeAnimation(1, Padding(
+            Padding(
               padding: EdgeInsets.all(20),
               child: Text('Free Delivery', style: TextStyle(color: Colors.grey[700], fontSize: 20, fontWeight: FontWeight.bold),),
-            )),
+            ),
             Expanded(
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
                       scrollDirection: Axis.horizontal,
                       itemCount: foods.length,
                       itemBuilder: (context, index) => 
-                      FadeAnimation(1, makeItem(image: foods[index]["image"], isFavorite: foods[index]["isFavorite"], index:index))
+                      makeItem(image: foods[index]["image"], isFavorite: foods[index]["isFavorite"], index:index)
                     ),
                 // child: ListView(
                 //   scrollDirection: Axis.horizontal,
